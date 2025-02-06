@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Exercise3</title>
+</head>
+<div class="bigContainer">
+    <div class="userInput">
+        <div>
+            <label for="task">Task:</label>
+            <input type="text" name="task" id="task" placeholder="Input your task">
+        </div>
+        <div>
+            <label for="priority">Priority</label>
+            <select name="priority" id="priority">
+                <option value="1">high</option>
+                <option value="0">low</option>
+            </select>
+        </div>
+        <button id="addTask" onclick="addTask()">Add task</button>
+        <button onclick="filterTasks(1)">Show only important tasks</button>
+        <button onclick="filterTasks(0)">Show the tasks that are not important</button>
+        <button onclick="displayTasks()">Show all the tasks</button>
+        </div>
+        <div id="taskContainer">
+            <ul id="myTask">
+            </ul>
+        <script>
+            const task = [];
+            function displayTasks(tasks = task){
+                const myList = document.getElementById("myTask");
+                myList.innerHTML = "";
+                    for(let i =0; i<tasks.length; i++){
+                        let newLi = document.createElement("li");
+                        newLi.textContent = tasks[i].description;
+                        newLi.style.backgroundColor = tasks[i].priority == 1 ?"red":"grey";
+                        myList.appendChild(newLi); 
+                    }
+                }
+            function addTask(){
+                let currenPriority = document.getElementById("priority").value;
+                let currentTask = document.getElementById("task");
+                let value = currentTask.value;
+                let newTask = {description:value,priority:currenPriority};
+                task.push(newTask);
+                displayTasks(task);
+                document.getElementById("task").value = "";
+                }
+            function filterTasks(priorityLevel) {
+                let filtered = task.filter(tasks => tasks.priority == priorityLevel);
+                displayTasks(filtered);
+                }
+        </script>
+        </div>
+    </div>
+    <script>
+
+    </script>
+
+</body>
+</html>

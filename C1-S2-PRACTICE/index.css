@@ -1,0 +1,32 @@
+ul{
+    width: 200px;
+}
+li{
+    list-style: none;
+    text-align: center;
+    margin-bottom: 10px;
+    height: 30px;
+}
+.bigContainer{
+    display: flex;
+    border: 1px solid rgb(41, 98, 204);
+    padding: 20px;
+    width: 30%;
+    margin: auto;
+}
+.userInput{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+#task{
+    border-radius: 5px;
+    border: 1px solid;
+}
+button{
+    padding: 5px 0;
+    background-color: rgb(35, 152, 202);
+    border-style: none;
+    border-radius: 3px;
+
+}

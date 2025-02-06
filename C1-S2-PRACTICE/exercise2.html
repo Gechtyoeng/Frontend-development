@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <script src="exercise1.js" defer></script>
+    <title>Exercise2</title>
+</head>
+<body>
+    <div class="bigContainer">
+        <div class="userInput">
+            <div>
+                <label for="task">Task:</label>
+                <input type="text" name="task" id="task">
+            </div>
+            <div>
+                <label for="priority">Priority</label>
+                <select name="priority" id="priority">
+                    <option value="1">high</option>
+                    <option value="0">low</option>
+                </select>
+            </div>
+            <button id="addTask" onclick="addTask()">Add task</button>
+        </div>
+        <div id="taskContainer">
+            <ul id="myTask">
+            </ul>
+            <script>
+                const task = [];
+                function displayTasks(tasks){
+                    const myList = document.getElementById("myTask");
+                    myList.innerHTML = "";
+                    for(let i =0; i<tasks.length; i++){
+                        let newLi = document.createElement("li");
+                        newLi.textContent = tasks[i].description;
+                        newLi.style.backgroundColor = tasks[i].priority == 1 ?"red":"grey";
+                        myList.appendChild(newLi); 
+                    }
+                }
+                function addTask(){
+                let currenPriority = document.getElementById("priority").value;
+                let currentTask = document.getElementById("task");
+                let value = currentTask.value;
+                let newTask = {description:value,priority:currenPriority};
+                task.push(newTask);
+                displayTasks(task);
+                document.getElementById("task").value = "";
+                }
+                
+               
+            </script>
+        </div>
+    </div>
+</body>
+</html>
